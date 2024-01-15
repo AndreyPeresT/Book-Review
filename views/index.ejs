@@ -1,0 +1,51 @@
+<%- include('./partials/header.ejs') %>  
+
+<nav>
+    <h1 id="title">The Ranking of Books</h1>
+
+    <div id="options">
+        <form action="/search" method="post">
+            <button type="submit" class="op-content" title="
+            Search a book">&DDotrahd;</button>
+        </form>
+        
+        <form action="/rating" method="post">
+            <button type="submit" class="op-content" title="
+            Order by rating" name="order" value="2">&bigstar;</button>
+        </form>
+
+        <form action="/asc" method="post">
+            <button type="submit" class="op-content last" title="
+            Order alphabetically" name="order" value="3">abc</button>
+        </form>
+    </div>
+</nav>
+    
+<div id="book-content">
+    <% books.forEach((book) => { %>
+        <div class="book-review">
+            <h3><%= book.name %></h3>
+            <span><%= book.rating %>&bigstar;</span>
+            <img src="https://covers.openlibrary.org/b/id/<%= book.titleid %>-M.jpg" alt="Book cover">
+            <p><%= book.review %></p>
+
+            <div class="book-forms">
+                <form action="/update" method="post" title="UPDATE">
+                    <input type="hidden" name="update" value="<%= book.id %>">
+                    <button type="submit" value="Submit" class="review-btn">
+                        &udarr;
+                    </button>
+                </form>
+
+                <form action="/delete" method="post" title="DELETE">
+                    <input type="hidden" name="delete" value="<%= book.id %>">
+                    <button type="submit" value="Submit" class="review-btn">
+                        &xotime;
+                    </button>
+                </form>
+            </div>
+        </div>
+    <%}); %>  
+</div>
+
+<%- include('./partials/footer.ejs') %>

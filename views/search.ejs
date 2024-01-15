@@ -1,0 +1,30 @@
+<%- include('./partials/header.ejs') %>
+
+<div id="search-box">
+    <h1 class="s-title"> Search a book </h1>
+    <form action="/getbook" method="post" id="search-content" autocomplete="off">
+        <input type="text" name="book" placeholder="Insert a book title" autofocus>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="grid-container">
+    <% if (locals.bookData) { %>
+        <% bookData.docs.forEach(book => { %>
+            <% if(book.cover_i != undefined) { %>    
+                <div class="grid-item">
+                    <form action="/add" method="post">
+                        <input type="hidden" name="bookId" value="<%=book.cover_i%>">
+                        <input type="hidden" name="bookTitle" value="<%=book.title%>">
+                        <h4 class="book-title"><%= book.title %></h4>
+                        <img src="https://covers.openlibrary.org/b/id/<%=book.cover_i%>-M.jpg" alt="Book cover">
+                        <button type="submit"> &plus; </button>
+                    </form>
+                </div>
+            <% } %>
+        <% }); %>
+    <% } %>
+</div>
+
+
+<%- include('./partials/footer.ejs') %>

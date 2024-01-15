@@ -1,0 +1,41 @@
+<%- include('./partials/header.ejs') %>  
+
+<div id="review">
+    <form action="/addReview" method="post" id="add-review">
+        
+        <input type="hidden" name="reviewTitle" value="<%= title %>">
+        <h1><%= title %></h1>
+        <input type="hidden" name="reviewId" value="<%= id %>">
+        <img src="https://covers.openlibrary.org/b/id/<%= id %>-M.jpg" alt="Book cover">
+
+        <label for="text-review" class="text-title">Your review</label>
+        <textarea name="yourReview" id="text-review" cols="50" rows="12"></textarea>
+
+        <div class="rating-review">
+            <p>Your rating</p>
+            <label>
+                <input type="radio" name="yourRating" value="1">
+                1 &bigstar;
+            </label>
+            <label>
+                <input type="radio" name="yourRating" value="2">
+                2 &bigstar;
+            </label>
+            <label>
+                <input type="radio" name="yourRating" value="3">
+                3 &bigstar;
+            </label>
+            <label>
+                <input type="radio" name="yourRating" value="4">
+                4 &bigstar;
+            </label>
+            <label>
+                <input type="radio" name="yourRating" value="5">
+                5 &bigstar;
+            </label>
+        </div>
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+</div>
+
+<%- include('./partials/footer.ejs') %>

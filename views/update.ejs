@@ -1,0 +1,38 @@
+<%- include('./partials/header.ejs') %>
+<h3 class="text-title"><%= book.name %></h3>
+<img src="https://covers.openlibrary.org/b/id/<%= book.titleid %>-M.jpg" alt="Book cover">
+
+<form action="/updateReview" method="post" id="update-review">
+
+    <input type="hidden" name="updateId" value="<%= book.id %>">
+    <label for="update-text">New Review</label>
+    <textarea name="updateText" id="update-text" cols="50" rows="12"></textarea>
+    
+    <div class="update-rating">
+        <p>New rating</p>
+        <label>
+            <input type="radio" name="newRating" value="1">
+            1 &bigstar;
+        </label>
+        <label>
+            <input type="radio" name="newRating" value="2">
+            2 &bigstar;
+        </label>
+        <label>
+            <input type="radio" name="newRating" value="3">
+            3 &bigstar;
+        </label>
+        <label>
+            <input type="radio" name="newRating" value="4">
+            4 &bigstar;
+        </label>
+        <label>
+            <input type="radio" name="newRating" value="5">
+            5 &bigstar;
+        </label>
+    </div>
+    <button type="submit" value="Submit">Submit</button>
+</form>
+
+
+<%- include('./partials/footer.ejs') %>
